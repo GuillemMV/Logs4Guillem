@@ -4,12 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * - Date format options (DD-MM-YYYY / MM-DD-YYYY / YYYY-MM-DD)
- * - Time format options (H:M:S / H:M / H)
- * - Log mode (0: Console / 1: LogFile)
- * - LogFile path
- */
+import exceptions.LogModeNotSupportedException;
 
 public class ConfigReader {
 	
@@ -18,17 +13,27 @@ public class ConfigReader {
 	private static int logMode;
 	private static String logFilePath;
 	
-	public static void readConfig() {
+	private static final String DEFAULT_DATE = "dd-MM-yyyy";
+	private static final  String DEFAULT_TIME = "HH:mm:mm";
+	private static final  String DEFAULT_MODE = "0";
+	
+	public static void readConfig(){
 		Properties props = new Properties();
 		try(FileInputStream input = new FileInputStream("config.properties")){
 			props.load(input);
-			dateFormat = props.getProperty("date.format", "DD-MM-YYYY");
-			timeFormat = props.getProperty("time.format", "HH:MM:SS");
-			logMode = Integer.parseInt(props.getProperty("log.mode", "0"));
+			dateFormat = props.getProperty("date.format", DEFAULT_DATE);
+			timeFormat = props.getProperty("time.format", DEFAULT_TIME);
+			logMode = Integer.parseInt(props.getProperty("log.mode", DEFAULT_MODE));
 			logFilePath = props.getProperty("logfile.path");
+			
+			if (logMode != 0 && logMode != 1) {
+				throw new LogModeNotSupportedException();
+			}
 			
 		}catch (IOException ioe) {
 			ioe.printStackTrace();
+		} catch (LogModeNotSupportedException lmnse) {
+			lmnse.printStackTrace();
 		}
 	}
 
@@ -40,7 +45,7 @@ public class ConfigReader {
 		return timeFormat;
 	}
 
-	public static int isLogMode() {
+	public static int getLogMode() {
 		return logMode;
 	}
 

@@ -12,8 +12,6 @@ public class DateTime {
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 		Date actualDate = new Date();
 		return sdf.format(actualDate);
-		
-		//TODO: Fix date.
 	}
 	
 	public static String generateTime() {

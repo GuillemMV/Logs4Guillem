@@ -1,7 +1,5 @@
 package mainpackage;
 
-import java.io.IOException;
-
 public class LogHandler {
 
 	private static LogHandler logHandler;
@@ -20,6 +18,14 @@ public class LogHandler {
 		return logHandler;
 	}
 
+	
+	/**
+	 * Generate and format the log String that will be shown in terminal, from the user custom message and message type.
+	 * @param context 
+	 * @param msg
+	 * @param type
+	 * @return String
+	 */
 	private static String generateMessage(Class<?> context, String msg, LogType type) {
 		String returnMessage = "";
 		String date = DateTime.generateDate();
@@ -51,6 +57,13 @@ public class LogHandler {
 		return returnMessage;
 	}
 
+	/**
+	 * Generate and format the log String that will be appended in the log file, from the user custom message and message type.
+	 * @param context 
+	 * @param msg
+	 * @param type
+	 * @return String
+	 */
 	private static String generateLogFileMessage(Class<?> context, String msg, LogType type) {
 		String returnMessage = "";
 		String time = DateTime.generateTime();
@@ -77,6 +90,12 @@ public class LogHandler {
 		return returnMessage;
 	}
 
+	/**
+	 * 
+	 * @param context
+	 * @param type
+	 * @param msg
+	 */
 	public void log(Class<?> context, LogType type, String msg){
 		
 		if (ConfigReader.getLogMode() == 0) {

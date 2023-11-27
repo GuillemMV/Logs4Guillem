@@ -8,8 +8,12 @@ import java.text.BreakIterator;
 
 public class FileHandler {
 
+	
+	/**
+	 * Method that handles the file creation and the log appending to it.
+	 * @param line Formatted string
+	 */
 	public static void generateLogFile(String line){
-		
 		File logFile = new File(ConfigReader.getLogFilePath()+DateTime.generateDate()+".txt");
 		
 		try {

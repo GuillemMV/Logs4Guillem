@@ -17,6 +17,9 @@ public class ConfigReader {
 	private static final  String DEFAULT_TIME = "HH:mm:mm";
 	private static final  String DEFAULT_MODE = "0";
 	
+	/**
+	 * Read and analyze the project config.properties file.
+	 */
 	public static void readConfig(){
 		Properties props = new Properties();
 		try(FileInputStream input = new FileInputStream("config.properties")){

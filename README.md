@@ -9,6 +9,6 @@ Export it as a JAR file, and put it on the project where you want to use it. The
 date.format=dd-MM-yyyy
 time.format=HH:mm:ss
 log.mode=0
-logfile.path=./
+logfile.path=./Logs/
 ```
 You can modify the values following the Java date and time formatting rules. The ```log.mode``` can be in 0 (For console mode) or 1 (External file mode).

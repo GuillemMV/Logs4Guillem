@@ -11,4 +11,4 @@ time.format=HH:mm:ss
 log.mode=0
 logfile.path=./
 ```
-You can modify the values following the Java date and time formatting rules. The ```logfile.mode``` can be in 0 (For console mode) or 1 (External file mode).
+You can modify the values following the Java date and time formatting rules. The ```log.mode``` can be in 0 (For console mode) or 1 (External file mode).
